@@ -91,7 +91,7 @@ let to_string ?len ?(encoding = `Utf8) ?scalar_style ?layout_style (v : value) =
           | _ -> Some `Double_quoted
         in
         Stream.scalar (scalar ?style ~quoted_implicit:true s) t
-    | `Float s -> Stream.scalar (scalar (Printf.sprintf "%.16g" s)) t
+    | `Float s -> Stream.scalar (scalar (Printf.sprintf "%.15g" s)) t
     (* NOTE: Printf format on the line above taken from the jsonm library *)
     | `Bool s -> Stream.scalar (scalar (string_of_bool s)) t
     | `A l ->
